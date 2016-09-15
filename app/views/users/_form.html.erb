@@ -1,0 +1,24 @@
+<div class="text-field">
+  <%= form.label :firstname %>
+  <%= form.text_field :firstname, type: 'text' %>
+</div>
+
+<div class="text-field">
+  <%= form.label :lastname %>
+  <%= form.text_field :lastname, type: 'text' %>
+</div>
+
+<div class="text-field">
+  <%= form.label :birthday %>
+  <%= form.date_select :birthday, type: 'date', start_year: 1900 %>
+</div>
+
+<div class="text-field">
+  <%= form.label :email %>
+  <%= form.text_field :email, type: 'email' %>
+</div>
+
+<div class="password-field">
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</div>
