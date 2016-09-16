@@ -5,6 +5,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+
   <div id="header">
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
@@ -20,5 +21,6 @@
   </div>
 
   <%= yield %>
+  
 </body>
 </html>
