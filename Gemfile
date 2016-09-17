@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 
-
+#adding omniauth for fb integration
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 #adding figaro for privacy protection

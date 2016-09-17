@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-
-  root 'welcome#home'
-        #^view_folder#file_name
-    #unless override, upon sign in, Rails will direct to home page by default for the '/' path
-
+  # get 'welcome/home'  #this was here for PairBnb
+  
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]                                           
   resource :session, controller: "clearance/sessions", only: [:create]
                                                         #the route action is only available for #create
@@ -13,6 +10,9 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
+
+  resources :users, only: [:show, :edit, :update, :destroy] 
+    #here, we're not pointing to any controller. Does rails know which controller to look for?
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   #this is similar as writing: 
@@ -26,7 +26,17 @@ Rails.application.routes.draw do
 
     #position root was originally here.
     
+  #Sept 16 to enable omniauthfb
+    #this step is necessary to ensure that the controller knows where to pinpoint once login successful
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  # #sept17 exp:
+  # get "/auth/failure" => "sessions#failure"
+
+
+  root 'welcome#home'
+        #^view_folder#file_name
+    #unless override, upon sign in, Rails will direct to home page by default for the '/' path
 
 
 

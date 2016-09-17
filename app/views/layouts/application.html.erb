@@ -20,6 +20,17 @@
     <% end %>
   </div>
 
+
+
+  <div id="user-widget">
+    <% if current_user %>
+      Welcome <strong><%= current_user.firstname %></strong>!
+      <%= link_to "Sign out", "/sign_out", method: :delete, id: "sign_out" %>
+    <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <% end %>
+  </div>
+
   <%= yield %>
   
 </body>
