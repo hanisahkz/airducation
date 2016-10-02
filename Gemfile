@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
 
+
+
+
+#adding figaro for privacy protection
+gem 'figaro'
+
 #adding gem clearance
 gem 'clearance'
 
