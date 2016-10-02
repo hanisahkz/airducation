@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       
       t.string :firstname 
       t.string :lastname 
-      t.string :birthday 
+      t.date :birthday 
 
       t.string :email, null: false
       t.string :encrypted_password, limit: 128, null: false
