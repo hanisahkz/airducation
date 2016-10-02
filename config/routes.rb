@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
-  get 'welcome/home'
 
-  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  root 'welcome#home'
+        #^view_folder#file_name
+    #unless override, upon sign in, Rails will direct to home page by default for the '/' path
+
+  resources :passwords, controller: "clearance/passwords", only: [:create, :new]                                           
   resource :session, controller: "clearance/sessions", only: [:create]
-
-  resources :users, controller: "users", only: [:create] do  #fix this line
+                                                        #the route action is only available for #create
+                                                        #doc 4.6 restring routes created. 
+  resources :users, controller: "users", only: [:create] do  #fixed done                               
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  #this is similar as writing: 
+    #get 'profile', to: 'users#show'
+    #get 'profile', to: :show, controller: 'users'
+
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+                    #^, to:                           #^will generate named helpers called: sign_out_path , sign_out_url
   get "/sign_up" => "clearance/users#new", as: "sign_up"
+    #  ^ url path                ^controller_name#method defined inside the controller
 
-
+    #position root was originally here.
+    
 
 
 
@@ -24,7 +35,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'welcome#home'
+  # root 'welcome#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
