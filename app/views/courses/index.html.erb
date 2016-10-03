@@ -1,0 +1,28 @@
+<h1>Index Page for Courses</h1>
+
+<table>
+
+  <tr>
+    <th><strong>Title</strong></th>
+    <th><strong>Description</strong></th>
+    <th><strong>University</strong></th>
+  </tr>
+
+  <% @courses.each do |course| %>
+  <tr>
+    <td><%= course.title%></td>
+    <td><%= course.description%></td>
+    <td><%= course.university %></td>
+    <td><%= link_to 'Show', course_path(course) %></td>
+
+    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+    <td><%= link_to 'Delete', course_path(course), method: :delete, data: {confirm: "Are you sure?"} %></td>
+
+    <% end %>
+  </tr>
+
+</table>
+
+
+
+
