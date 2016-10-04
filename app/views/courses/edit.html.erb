@@ -1,0 +1,5 @@
+<h1>Update your course here.</h1>
+
+<%= form_for(@course, url: course_path(@course), html: {method: "patch"}) do |form| %>
+<%= render partial: "form" %>
+<% end %>

@@ -11,8 +11,10 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :users, only: [:show, :edit, :update, :destroy] 
-    #here, we're not pointing to any controller. Does rails know which controller to look for?
+  resources :users, only: [:show, :edit, :update, :destroy]  
+    
+  # Oct 2- possible to nest with users, but for now, the idea seems weird and complicated 
+  resources :courses
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   #this is similar as writing: 
@@ -33,19 +35,13 @@ Rails.application.routes.draw do
   # #sept17 exp:
   # get "/auth/failure" => "sessions#failure"
 
+  
 
   root 'welcome#home'
         #^view_folder#file_name
-    #unless override, upon sign in, Rails will direct to home page by default for the '/' path
+        #unless override, upon sign in, Rails will direct to home page by default for the '/' path
 
 
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-  # root 'welcome#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

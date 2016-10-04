@@ -1,0 +1,25 @@
+<%= form_for @course do |form| %>
+  
+  <p>
+    <%= form.text_field :title, placeholder: "Title" %>
+  </p> 
+
+  <p>
+    <%= form.text_area :description, placeholder: "Description" %>
+  </p>
+
+  <p>
+    <%= form.text_field :university, placeholder: "University" %>
+  </p>
+
+  <p>
+    <%= form.label "Course Duration" %><br>
+    <input type="text" class="daterange" name="daterange"/>
+  </p>
+
+  <p>
+    <%= form.submit class: "btn btn-primary" %>
+  </p>
+
+  <% end %>
+

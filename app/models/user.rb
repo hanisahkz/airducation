@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include UsersHelper #added sept16
 
   has_many :authentications, :dependent => :destroy
+  has_many :courses, :dependent => :destroy #when a user gets deleted, so does the courses owned
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
@@ -27,8 +28,9 @@ class User < ActiveRecord::Base
     true
   end
 
-  #sept 16 - solution 2 if doesnt want to use include UsersHelper as above
-  # def current_user #coderwall
+  #sept 16 - solution 2 if doesnt want to use: include UsersHelper as above
+    # obtained from coderwall
+  # def current_user 
   #     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   # end
 
